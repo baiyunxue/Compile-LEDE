@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=======================================================
 
-name: openwrt-19.07
+name: LEDE
 
 on: 
 # Release 发布触发
@@ -67,8 +67,8 @@ jobs:
         sudo -E apt-get clean
     - name: 克隆源代码
       env: 
-        REPO_URL: https://github.com/openwrt/openwrt
-        REPO_BRANCH: openwrt-19.07
+        REPO_URL: https://github.com/coolsnowwolf/lede
+        REPO_BRANCH: master
         TZ: Asia/Shanghai
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
@@ -83,7 +83,7 @@ jobs:
         
     - name: 自定义配置config
       env:
-        CONFIG_FILE: 'openwrt.config'
+        CONFIG_FILE: 'LEDE.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./DIY.sh && ./DIY.sh
@@ -108,5 +108,5 @@ jobs:
     - name : 上传固件
       uses: actions/upload-artifact@main
       with:
-        name: openwrt-19.07
+        name: LEDE
         path: openwrt/bin
