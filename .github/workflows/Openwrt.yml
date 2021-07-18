@@ -1,8 +1,12 @@
-#=================================================
+#=======================================================
+# Copyright (c) 2021 baiyunxue
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/baiyunxue/Compile
 # Description: Build OpenWrt using GitHub Actions
-# Lisence: MIT
-# Author: Baiyun
-#=================================================
+#=======================================================
 
 name: openwrt-19.07
 
