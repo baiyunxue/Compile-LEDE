@@ -1,11 +1,14 @@
 #!/bin/bash
-#=================================================
+#=======================================================
 # Copyright (c) 2021 baiyunxue
-# Description: DIY script
-# Lisence: MIT
-# https://github.com/baiyunxue/Compile
-#=================================================
 #
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/baiyunxue/Compile
+# File name: DIY.sh
+# Description: OpenWrt DIY script (Before Update feeds)
+#=======================================================
 
 # 自定义 IP地址
 sed -i 's/192.168.1.1/192.168.10.1/g' openwrt/package/base-files/files/bin/config_generate
