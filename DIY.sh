@@ -26,6 +26,8 @@ sed -i 's/disabled=1/disabled=0/g' openwrt/package/kernel/mac80211/files/lib/wif
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 
 # Add immortalwrt's Packages
+
+echo 'src-git linkease https://github.com/linkease/ddnsto-openwrt.git' >>feeds.conf.default
 git clone --depth=1 -b openwrt-18.06 https://github.com/immortalwrt/packages
 git clone --depth=1 -b openwrt-18.06-k5.4 https://github.com/immortalwrt/luci
 cp -r ../luci/applications/luci-app-adguardhome ../package/lean//luci-app-adguardhome
