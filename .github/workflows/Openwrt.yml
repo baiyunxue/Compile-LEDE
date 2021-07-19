@@ -84,7 +84,7 @@ jobs:
         
     - name: 自定义配置config
       env:
-        CONFIG_FILE: 'lede.config'
+        CONFIG_FILE: '.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./DIY.sh && ./DIY.sh
