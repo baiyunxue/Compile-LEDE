@@ -6,8 +6,8 @@
 # See /LICENSE for more information.
 #
 # https://github.com/baiyunxue/Compile
-# File name: DIY.sh
-# Description: OpenWrt DIY script (Before Update feeds)
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (Before Update feeds)
 #=======================================================
 
 # 自定义 IP地址
