@@ -40,10 +40,10 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     
     steps:
-    - name: 检查
+    - name: 检查。。。。。。初始化环境
       uses: actions/checkout@main
 
-    - name: 初始化环境
+    - name: 载入Ubuntu-20.04
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -99,9 +99,11 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         
-    - name: 下载包文件
-      working-directory: ./openwrt
+    - name: 下载编译所需dl文件
+      id: package
       run: |
+        cd openwrt
+        make defconfig
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
