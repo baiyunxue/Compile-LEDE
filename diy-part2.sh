@@ -38,6 +38,9 @@ pushd package/community
 git clone --depth=1 https://github.com/Lienol/openwrt-package
 rm -rf ../lean/luci-app-kodexplorer
 
+# Add zerotier
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-zerotier
+
 # Add immortalwrt's Packages
 git clone --depth=1 -b openwrt-18.06 https://github.com/immortalwrt/packages
 git clone --depth=1 -b openwrt-18.06-k5.4 https://github.com/immortalwrt/luci
