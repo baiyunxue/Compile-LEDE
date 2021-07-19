@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=======================================================
 
-name: LEDE
+name: LEDE2
 
 on: 
 # Release 发布触发
