@@ -31,4 +31,7 @@ git clone --depth=1 -b openwrt-18.06-k5.4 https://github.com/immortalwrt/luci
 cp -r ../luci/applications/luci-app-adguardhome ../package/lean//luci-app-adguardhome
 
 # Add luci-app-ddnsto
-git clone -b master --single-branch https://github.com/281677160/openwrt-package.git
+svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-ddnsto
+svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-linkease
+svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/ddnsto
+svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/linkease
