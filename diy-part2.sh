@@ -35,3 +35,44 @@ svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto packag
 svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-linkease
 svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/ddnsto
 svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/linkease
+
+# Add apk (Apk Packages Manager)
+svn co https://github.com/openwrt/packages/trunk/utils/apk
+popd
+
+# Mod zzz-default-settings
+pushd package/lean/default-settings/files
+sed -i '/http/d' zzz-default-settings
+export orig_version="$(cat "zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
+sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" zzz-default-settings
+popd
+
+# Use Lienol's https-dns-proxy package
+pushd feeds/packages/net
+rm -rf https-dns-proxy
+svn co https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy
+popd
+
+# Use snapshots' syncthing package
+pushd feeds/packages/utils
+rm -rf syncthing
+svn co https://github.com/openwrt/packages/trunk/utils/syncthing
+popd
+
+# Fix mt76 wireless driver
+pushd package/kernel/mt76
+sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
+popd
+
+# Change default shell to zsh
+sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
+
+# Add luci-app-diskman
+git clone --depth=1 https://github.com/SuLingGG/luci-app-diskman
+mkdir parted
+cp luci-app-diskman/Parted.Makefile parted/Makefile
+
+# Add luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
+rm -rf ../lean/luci-theme-argon
