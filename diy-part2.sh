@@ -27,8 +27,8 @@ sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/theme
 
 # Add luci-app-ddnsto
 svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-ddnsto
-svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-linkease
+#svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-linkease
 svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/ddnsto
-svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/linkease
+#svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/linkease
 
 
