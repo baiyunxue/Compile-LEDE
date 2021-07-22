@@ -31,4 +31,6 @@ svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto packag
 svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/ddnsto
 #svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/linkease
 
+#Add 
+svn co https://github.com/jerrykuku/luci/trunk/applications/luci-app-smartdns package/lean/luci-app-smartdns
 
