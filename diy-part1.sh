@@ -29,9 +29,9 @@ echo 'src-git baiyunxue https://github.com/baiyunxue/lede-feeds.git' >>feeds.con
 #sed -i '$a src-git liuran001_packages https://github.com/liuran001/openwrt-packages' feeds.conf.default
 
 # Add luci-theme-argon
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
-rm -rf ../lean/luci-theme-argon
+#git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+#rm -rf ../lean/luci-theme-argon
 
 # Svn checkout packages from immortalwrt's repository
-git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
-git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 luci
+#git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
+#git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 luci
