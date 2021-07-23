@@ -19,3 +19,4 @@ echo 'src-git hackluci https://github.com/openwrt/luci.git' >>feeds.conf.default
 #echo 'src-git baiyunxue https://github.com/baiyunxue/lede-feeds.git' >>feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 #sed -i '$a src-git diy https://github.com/CCnut/feed-netkeeper.git;LUCI-LUA-UCITRACK' feeds.conf.default
+sed -i '$a src-git immortalwrt https://github.com/immortalwrt/luci.git' feeds.conf.default
