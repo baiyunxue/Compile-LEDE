@@ -26,11 +26,11 @@ sed -i 's/disabled=1/disabled=0/g' openwrt/package/kernel/mac80211/files/lib/wif
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 
 # Add luci-app-ddnsto
-svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lang/luci-app-ddnsto
+#svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lang/luci-app-ddnsto
 #svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/luci/luci-app-ddnsto package/lean/luci-app-linkease
-svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/ddnsto
+#svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/ddnsto
 #svn co https://github.com/baiyunxue/ZDY/trunk/ddnsto/network/services/ddnsto package/network/services/linkease
 
 #Add 
-svn co https://github.com/jerrykuku/luci/trunk/applications/luci-app-smartdns package/lang/luci-app-smartdns
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-zerotier package/lang/luci-app-zerotier
+#svn co https://github.com/jerrykuku/luci/trunk/applications/luci-app-smartdns package/lang/luci-app-smartdns
+#svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-zerotier package/lang/luci-app-zerotier
