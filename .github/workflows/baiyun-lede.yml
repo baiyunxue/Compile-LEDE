@@ -55,11 +55,18 @@ jobs:
     - name: 克隆源代码
       working-directory: /workdir
       run: |
-        git clone https://github.com/coolsnowwolf/lede
+        git clone https://github.com/coolsnowwolf/lede openwrt
     
     - name: 更新 & 安装 feeds
       run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
 
+    - name: 加载自定义app
+      run: 
+        svn co https://github.com/pymumu/luci-app-smartdns/branches/lede feeds/luci/applications/luci-app-smartdns
+    
+    - name: 安装smartdns    
+      run: cd openwrt && ./scripts/feeds install luci -a
+    
     - name: 加载自定义 .config
       run: |
         [ -e files ] && mv files openwrt/files
