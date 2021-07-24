@@ -55,7 +55,9 @@ jobs:
     - name: 克隆源代码
       working-directory: /workdir
       run: |
-        git clone https://github.com/coolsnowwolf/lede openwrt
+        df -hT $PWD
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
     
     - name: 更新 & 安装 feeds
       run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
