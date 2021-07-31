@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: 检查。。。。。。初始环境
-        uses: actions/checkout@master
+        uses: actions/checkout@main
 
       - name: 正在载入Ubuntu。。。。。
         run: |
@@ -40,7 +40,6 @@ jobs:
         run: |
           git clone -b openwrt-19.07 https://github.com/openwrt/openwrt
           cd openwrt
-          sed -i '$a src-git ZDY https://github.com/baiyunxue/ZDY.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
@@ -62,7 +61,7 @@ jobs:
           make -j1 V=s
           
       - name : 上传固件
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: openwrt/bin
