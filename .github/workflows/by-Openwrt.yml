@@ -38,8 +38,8 @@ jobs:
 
       - name: 克隆源代码
         run: |
-          git clone -b openwrt-19.07 https://github.com/openwrt/openwrt by-openwrt
-          cd by-openwrt
+          git clone -b openwrt-19.07 https://github.com/openwrt/openwrt
+          cd openwrt
           sed -i '$a src-git ZDY https://github.com/baiyunxue/ZDY.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -53,12 +53,12 @@ jobs:
    
       - name: 下载编译所需要的dl包
         run: |
-          cd by-openwrt
+          cd openwrt
           make -j8 download V=s   
           
       - name: 开始编译固件：请稍等..........(大概2小时左右)
         run: |
-          cd by-openwrt
+          cd openwrt
           make -j1 V=s
           
       - name: 检查空间使用情况
