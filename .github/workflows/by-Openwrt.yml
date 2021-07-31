@@ -24,7 +24,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: 检查。。。。。。初始环境
+        uses: actions/checkout@master
 
       - name: 正在载入Ubuntu。。。。。
         run: |
@@ -39,7 +40,7 @@ jobs:
         run: |
           git clone -b openwrt-19.07 https://github.com/openwrt/openwrt by-openwrt
           cd by-openwrt
-          sed -i '$a src-git kiddin9 https://github.com/kiddin9/openwrt-packages.git
+          sed -i '$a src-git ZDY https://github.com/baiyunxue/ZDY.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
