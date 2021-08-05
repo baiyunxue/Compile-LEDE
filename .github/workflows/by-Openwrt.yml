@@ -40,7 +40,7 @@ jobs:
         run: |
           git clone -b openwrt-19.07 https://github.com/openwrt/openwrt
           cd openwrt
-          sed -i '$a src-git immortalwrt https://github.com/immortalwrt/luci.git;master' feeds.conf.default
+          sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package.git;19.07' feeds.conf.default
           sed -i 's/192.168.1.1/192.168.10.1/g' openwrt/package/base-files/files/bin/config_generate
           ./scripts/feeds update -a
           ./scripts/feeds install -a
