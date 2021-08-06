@@ -41,6 +41,7 @@ jobs:
           git clone -b openwrt-19.07 https://git.openwrt.org/openwrt/openwrt.git
           cd openwrt
           sed -i '$a src-git ZDY https://github.com/baiyunxue/ZDY.git' feeds.conf.default
+          sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
