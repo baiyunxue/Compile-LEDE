@@ -40,7 +40,7 @@ jobs:
         run: |
           git clone -b openwrt-19.07 https://git.openwrt.org/openwrt/openwrt.git
           cd openwrt
-          sed -i '$a src-git ZDY https://github.com/baiyunxue/ZDY.git' feeds.conf.default
+          git clone https://github.com/kenzok8/jell.git package/jell
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
