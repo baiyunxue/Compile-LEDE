@@ -43,6 +43,8 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           git clone https://github.com/baiyunxue/openwrt-app.git package/files
+          svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-smartdns package/files
+          svn co https://github.com/immortalwrt/packages/trunk/net/smartdns package/files
       
       - name: SSH连接至Actions云服务器
         uses: P3TERX/ssh2actions@v1.0.0
