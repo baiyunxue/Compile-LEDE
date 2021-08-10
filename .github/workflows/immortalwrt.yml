@@ -47,7 +47,11 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+        sudo -E apt-get -qq install build-essential cmake asciidoc binutils bzip2 gawk gettext git libncurses5-dev \
+          libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib \
+          g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libreadline-dev libglib2.0-dev xmlto qemu-utils upx \
+          libelf-dev autoconf automake libtool autopoint ccache curl wget vim nano python2.7 python3 python3-pip \
+          python3-ply haveged lrzsz device-tree-compiler scons antlr3 gperf intltool mkisofs rsync
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
@@ -68,11 +72,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
     
-    - name: 更新 feeds
-      run: cd openwrt && ./scripts/feeds update -a
-
-    - name: 安装 feeds
-      run: cd openwrt && ./scripts/feeds install -a
+    - name: 更新 & 安装 feeds
+      run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
 
     - name: 加载自定义 .config 和 DIY_P2_SH
       run: |
@@ -82,14 +83,14 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: 利用SSH连接至Actions云平台
+    - name: SSH连接至Actions云服务器
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-    - name: 下载编译所需要dl包
+    - name: 下载编译所需要的dl包
       id: package
       run: |
         cd openwrt
@@ -98,7 +99,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
     
-    - name: 开始编译固件：请稍等..........(大概1小时左右)
+    - name: 开始编译固件：请稍等..........(大概2小时左右)
       id: compile
       run: |
         cd openwrt
