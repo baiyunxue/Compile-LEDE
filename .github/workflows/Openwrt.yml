@@ -116,7 +116,6 @@ jobs:
 
     - name: 上传（固件+ipk）的bin文件夹 到github空间
       uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
