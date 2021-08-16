@@ -4,7 +4,7 @@
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
-# https://github.com/baiyunxue/Compile-Lede-Openwrt
+# https://github.com/baiyunxue/Compile
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
@@ -56,7 +56,7 @@ jobs:
           cd openwrt
           make -j1 V=s
           
-      - name : 上传固件
+      - name : 上传（bin+ipk）固件文件夹 到github空间
         uses: actions/upload-artifact@main
         with:
           name: by-Openwrt-g_bin
