@@ -41,8 +41,8 @@ jobs:
           sed -i '$a src-git diy https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services
-          svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files
+          svn co https://github.com/281677160/openwrt-package/trunk/package/luci-app-ddnsto/network/services/ddnsto package/network/services
+          svn co https://github.com/281677160/openwrt-package/trunk/package/luci-app-ddnsto/luci/luci-app-ddnsto package/files
       
       - name: SSH连接至Actions云服务器
         uses: P3TERX/ssh2actions@v1.0.0
