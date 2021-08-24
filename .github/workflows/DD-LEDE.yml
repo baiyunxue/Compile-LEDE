@@ -21,13 +21,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: 检查。。。。。。初始环境
         uses: actions/checkout@main
 
-      - name: 正在载入Ubuntu-latest。。。。。
+      - name: 正在载入Ubuntu-20.04。。。。。
         run: |
           sudo apt-get update
           sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev \
