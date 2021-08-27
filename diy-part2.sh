@@ -21,5 +21,5 @@
 
 # 自定义app
 #git clone https://github.com/baiyunxue/openwrt-app.git package/files
-svn co https://github.com/281677160/openwrt-package/trunk/package/luci-app-ddnsto/network/services/ddnsto package/network/services/ddnsto
-svn co https://github.com/281677160/openwrt-package/trunk/package/luci-app-ddnsto/luci/luci-app-ddnsto package/files/luci-app-ddnsto
+svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto
+svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto
