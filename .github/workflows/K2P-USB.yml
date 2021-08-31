@@ -4,11 +4,11 @@
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
-# https://github.com/baiyunxue/Compile
+# https://github.com/baiyunxue/Compile-LEDE
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: DD-LEDE
+name: K2P-USB
 
 on:
   repository_dispatch:
@@ -65,5 +65,5 @@ jobs:
       - name : 上传（bin+ipk）固件文件夹 到github空间
         uses: actions/upload-artifact@main
         with:
-          name: DD-LEDE_bin
+          name: K2P-USB_bin
           path: openwrt/bin
