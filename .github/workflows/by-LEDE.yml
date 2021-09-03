@@ -41,9 +41,6 @@ jobs:
           sed -i '$a src-git diy https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          cd openwrt
-          svn co https://github.com/281677160/openwrt-package/trunk/package/luci-app-ddnsto/network/services/ddnsto package/network/services/ddnsto
-          svn co https://github.com/281677160/openwrt-package/trunk/package/luci-app-ddnsto/luci/luci-app-ddnsto package/files/luci-app-ddnsto
         
       - name: 加载自定义 .config 和 自定义 软件
         run: |
