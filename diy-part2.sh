@@ -21,8 +21,9 @@
 
 # 自定义app
 #git clone https://github.com/baiyunxue/openwrt-app.git package/files
-git clone https://github.com/jerrykuku/node-request.git package/files
+#git clone https://github.com/jerrykuku/node-request.git package/files
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package/files/luci-app-xunlei
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-qbittorrent package/files/luci-app-qbittorrent
+svn co https://github.com/immortalwrt/luci/tree/master/themes/luci-theme-bootstrap-mod package/files/luci-theme-bootstrap-mod
