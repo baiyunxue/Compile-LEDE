@@ -29,5 +29,5 @@ svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/application
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns
 
 # 自定义theme
-svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
+svn co https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
