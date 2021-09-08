@@ -5,7 +5,7 @@
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
-# https://github.com/baiyunxue/Compile
+# https://github.com/baiyunxue/Compile-LEDE
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (Before Update feeds)
 #=============================================================
@@ -22,12 +22,20 @@
 # 自定义app
 #git clone https://github.com/baiyunxue/openwrt-app.git package/files
 #git clone https://github.com/jerrykuku/node-request.git package/files
-svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto
-svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto
-svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package/files/luci-app-xunlei
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-openclash package/files/luci-app-openclash
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns
+git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
+git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus  #京东签到
+svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto  #DDNSTO穿透
+svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto  #DDNSTO穿透
+svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package/files/luci-app-xunlei  #迅雷下载
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-openclash package/files/luci-app-openclash  #openclash出国软件
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns  #smartdns DNS加速
 
-# 自定义theme
-svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06-k5.4/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
+# 自定义theme主题
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+rm -rf ../lean/luci-theme-argon
+#svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
+
+# 自定义第三方软件包
+#git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
+git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 luci
