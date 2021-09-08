@@ -26,8 +26,8 @@ svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/s
 svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package/files/luci-app-xunlei
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-openclash package/files/luci-app-openclash
-svn co https://github.com/281677160/openwrt-package/tree/master/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns
 
 # 自定义theme
-svn co https://github.com/immortalwrt/luci/trunk/themes/luci-theme-bootstrap-mod package/files/luci-theme-bootstrap-mod
-svn co https://github.com/281677160/openwrt-package/tree/master/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
