@@ -37,5 +37,5 @@ rm -rf ../lean/luci-theme-argon
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
 
 # 自定义第三方软件包
-#git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
+git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
 git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 package/diy
