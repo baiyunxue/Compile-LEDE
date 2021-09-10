@@ -30,6 +30,9 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-openclash package/files/luci-app-openclash  #openclash出国软件
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns  #smartdns DNS加速
 
+# 取消bootstrap为默认主题
+sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
+
 # 自定义theme主题
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 rm -rf ../lean/luci-theme-argon
