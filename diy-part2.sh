@@ -36,15 +36,15 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package
 # Add luci-theme-argon
 #git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
 #git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
-rm -rf ../lean/luci-theme-argon
+#rm -rf ../lean/luci-theme-argon
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomcat package/files/luci-theme-opentomcat
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
 
 # 自定义第三方软件包
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
 #git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 package/immortalwrt
- git clone -b 18.06 https://github.com/kenzok8/openwrt-packages package/kenzok8
- git clone https://github.com/liuran001/openwrt-packages package/liuran001
- git clone https://github.com/kiddin9/openwrt-packages.git package/kiddin9
+#git clone -b 18.06 https://github.com/kenzok8/openwrt-packages package/kenzok8
+#git clone https://github.com/liuran001/openwrt-packages package/liuran001
+#git clone https://github.com/kiddin9/openwrt-packages.git package/kiddin9
  git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy
 
