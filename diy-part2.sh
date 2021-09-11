@@ -29,13 +29,22 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-openclash package/files/luci-app-openclash  #openclash出国软件
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns  #smartdns DNS加速
 
+# Add luci-app-dockerman
+rm -rf ../lean/luci-app-docker
+git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+
+
 # 取消bootstrap为默认主题
 #sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 #sed -i '/set luci.main.mediaurlbase=\/luci-static\/argonv3/d' feeds/luci/themes/luci-theme-argonv3/root/etc/uci-defaults/30_luci-theme-argonv3
 
 # 自定义theme主题
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon  package/files/luci-theme-argon
+# Add luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
 rm -rf ../lean/luci-theme-argon
+git clone https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod.git package/files/luci-theme-argon-dark-mod
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
 
 # 自定义第三方软件包
