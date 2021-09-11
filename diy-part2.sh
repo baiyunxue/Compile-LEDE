@@ -20,7 +20,6 @@
 #sed -i 's/ssid=OpenWrt/ssid=lantian/g' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 自定义app
-#git clone https://github.com/baiyunxue/openwrt-app.git package/files
 #git clone https://github.com/jerrykuku/node-request.git package/files
 git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus  #京东签到
@@ -37,9 +36,9 @@ svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/application
 # 自定义theme主题
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 rm -rf ../lean/luci-theme-argon
-#svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
 
 # 自定义第三方软件包
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
-git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 package/diy
+#git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 package/diy
