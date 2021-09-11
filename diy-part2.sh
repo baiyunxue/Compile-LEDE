@@ -34,9 +34,8 @@ svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/application
 #sed -i '/set luci.main.mediaurlbase=\/luci-static\/argonv3/d' feeds/luci/themes/luci-theme-argonv3/root/etc/uci-defaults/30_luci-theme-argonv3
 
 # 自定义theme主题
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon  package/files/luci-theme-argon
 rm -rf ../lean/luci-theme-argon
-svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
 
 # 自定义第三方软件包
