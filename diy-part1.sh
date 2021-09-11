@@ -14,7 +14,7 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # 自定义feeds
-#sed -i '$a src-git diy https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
+sed -i '$a src-git diy https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
 #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #sed -i '$a src-git 281677160 https://github.com/281677160/openwrt-package.git;19.07' feeds.conf.default
 #echo 'src-git baiyunxue https://github.com/baiyunxue/lede-feeds.git' >>feeds.conf.default
