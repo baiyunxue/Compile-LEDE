@@ -46,5 +46,5 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package
 #git clone -b 18.06 https://github.com/kenzok8/openwrt-packages package/kenzok8
 #git clone https://github.com/liuran001/openwrt-packages package/liuran001
 #git clone https://github.com/kiddin9/openwrt-packages.git package/kiddin9
- git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy
+#git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy
 
