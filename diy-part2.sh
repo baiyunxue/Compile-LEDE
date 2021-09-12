@@ -22,9 +22,9 @@
 # 自定义app
 #git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
 #git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus  #京东签到
-svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto  #DDNSTO穿透
-svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto  #DDNSTO穿透
-svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package/files/luci-app-xunlei  #迅雷下载
+#svn co https://github.com/linkease/ddnsto-openwrt/trunk/ddnsto package/network/services/ddnsto  #DDNSTO穿透
+#svn co https://github.com/linkease/ddnsto-openwrt/trunk/luci-app-ddnsto package/files/luci-app-ddnsto  #DDNSTO穿透
+#svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-xunlei package/files/luci-app-xunlei  #迅雷下载
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-openclash package/files/luci-app-openclash  #openclash出国软件
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications/luci-app-smartdns package/files/luci-app-smartdns  #smartdns DNS加速
 
