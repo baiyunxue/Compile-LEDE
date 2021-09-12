@@ -38,11 +38,11 @@ jobs:
         run: |
           git clone https://github.com/coolsnowwolf/lede openwrt
           cd openwrt
-          sed -i '$a src-git diy https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          rm -rf ../lean/luci-app-jd-dailybonus
-          git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus
+          svn co https://github.com/baiyunxue/lede-feeds/trunk/luci/applications/luci-app-smartdns package/DIY/luci-app-smartdns
+          svn co https://github.com/baiyunxue/lede-feeds/trunk/luci/applications/luci-theme-opentomato package/DIY/luci-theme-opentomato
+          
       
       - name: SSH连接至Actions云服务器
         uses: P3TERX/ssh2actions@v1.0.0
