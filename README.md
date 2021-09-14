@@ -24,7 +24,7 @@
    ./scripts/feeds install -a
    make menuconfig
    ```
-在lede目录下打开.config文件，复制内容到Compile-Lede-Openwrt的.config替换其内容
+在lede目录下打开.config文件，复制内容到Compile-LEDE的.config替换其内容
 
 也可以删除.config文件直接在线编译，利用SSH在线配置config文件，前提是网络好最好有梯子，不然很卡容易掉线。
 
