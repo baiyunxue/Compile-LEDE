@@ -20,7 +20,6 @@
 #sed -i 's/ssid=OpenWrt/ssid=lantian/g' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 自定义app
-git clone https://github.com/baiyunxue/lede-feeds feeds
 #git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
 #rm -rf ../lean/luci-app-jd-dailybonus
 #git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus  #京东签到
