@@ -40,6 +40,7 @@
 #rm -rf ../lean/luci-theme-argon
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomcat package/files/luci-theme-opentomcat
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
+git clone https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod.git package/files/luci-theme-argon-dark-mod
 
 # 自定义第三方软件包
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
