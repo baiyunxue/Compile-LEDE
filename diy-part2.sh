@@ -43,7 +43,6 @@ git clone https://github.com/baiyunxue/lede-feeds feeds
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomcat package/files/luci-theme-opentomcat
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
 #svn co https://github.com/liuran001/openwrt-packages/trunk/packages/luci-theme-opentomcat package/files/luci-theme-opentomcat
-svn co svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06-k5.4/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 
 # 自定义第三方软件包
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
