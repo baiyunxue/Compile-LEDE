@@ -35,12 +35,14 @@
 
 # 自定义theme主题
 # Add luci-theme-argon
+#rm -rf ../lean/luci-theme-argon
 #git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
 #git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
-#rm -rf ../lean/luci-theme-argon
+
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomcat package/files/luci-theme-opentomcat
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
-git clone https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod.git package/files/luci-theme-argon-dark-mod
+svn co https://github.com/liuran001/openwrt-packages/trunk/packages/luci-theme-opentomcat package/files/luci-theme-opentomcat
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 
 # 自定义第三方软件包
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
