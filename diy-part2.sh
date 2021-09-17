@@ -36,9 +36,9 @@ git clone https://github.com/baiyunxue/lede-feeds feeds
 
 # 自定义theme主题
 # Add luci-theme-argon
-rm -rf ../lean/luci-theme-argon
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
+#rm -rf ../lean/luci-theme-argon
+#git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
+#git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
 
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomcat package/files/luci-theme-opentomcat
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
