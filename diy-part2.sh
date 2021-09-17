@@ -20,6 +20,7 @@
 #sed -i 's/ssid=OpenWrt/ssid=lantian/g' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 自定义app
+git clone https://github.com/baiyunxue/lede-app package/files
 #git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
 #rm -rf ../lean/luci-app-jd-dailybonus
 #git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus  #京东签到
@@ -35,14 +36,14 @@
 
 # 自定义theme主题
 # Add luci-theme-argon
-#rm -rf ../lean/luci-theme-argon
-#git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
-#git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
+rm -rf ../lean/luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/files/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/files/luci-app-argon-config
 
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomcat package/files/luci-theme-opentomcat
 #svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes/luci-theme-opentomato package/files/luci-theme-opentomato
-svn co https://github.com/liuran001/openwrt-packages/trunk/packages/luci-theme-opentomcat package/files/luci-theme-opentomcat
-svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
+#svn co https://github.com/liuran001/openwrt-packages/trunk/packages/luci-theme-opentomcat package/files/luci-theme-opentomcat
+#svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/themes/luci-theme-argon-dark-mod package/files/luci-theme-argon-dark-mod
 
 # 自定义第三方软件包
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
