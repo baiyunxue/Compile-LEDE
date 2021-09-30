@@ -44,6 +44,12 @@ sed -i 's/disabled=1/disabled=0/g' openwrt/package/kernel/mac80211/files/lib/wif
 #svn co https://github.com/liuran001/openwrt-packages/trunk/packages/luci-theme-opentomcat package/files/luci-theme-opentomcat
 
 # 自定义第三方软件包
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/DIY1
+git clone https://github.com/AlexZhuo/luci-app-bandwidthd.git package/DIY2
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/DIY3
+git clone https://github.com/jerrykuku/lua-maxminddb.git package/DIY4
+git clone https://github.com/kenzok8/openwrt-packages.git package/DIY5
+git clone https://github.com/kenzok8/small.git package/DIY6
 #git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 packages
 #git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 package/immortalwrt
 #git clone -b 18.06 https://github.com/kenzok8/openwrt-packages package/kenzok8
