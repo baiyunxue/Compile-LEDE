@@ -40,10 +40,13 @@ jobs:
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          svn co https://github.com/baiyunxue/lede-feeds/trunk/luci/applications/luci-app-smartdns package/DIY/luci-app-smartdns
-          svn co https://github.com/baiyunxue/lede-feeds/trunk/luci/applications/luci-theme-opentomato package/DIY/luci-theme-opentomato
+          git clone https://github.com/jerrykuku/luci-theme-argon.git
+          git clone https://github.com/AlexZhuo/luci-app-bandwidthd.gi
+          git clone https://github.com/jerrykuku/luci-app-vss.git
+          git clone https://github.com/jerrykuku/lua-maxminddb.git
+          git clone https://github.com/kenzok8/openwrt-packages.git
+          git clone https://github.com/kenzok8/small.git
           
-      
       - name: SSH连接至Actions云服务器
         uses: P3TERX/ssh2actions@v1.0.0
         if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
