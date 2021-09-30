@@ -40,6 +40,9 @@ jobs:
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+      - name: 自定义软件包
+        run: |
+          cd package
           git clone https://github.com/jerrykuku/luci-theme-argon.git
           git clone https://github.com/AlexZhuo/luci-app-bandwidthd.gi
           git clone https://github.com/jerrykuku/luci-app-vss.git
