@@ -20,7 +20,7 @@ on:
         default: 'true'
 
 env:
-  REPO_URL: https://github.com/baiyunxue/lede.git
+  REPO_URL: https://github.com/baiyunxue/openwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -35,13 +35,13 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: 检查。。。。。。初始环境
       uses: actions/checkout@main
 
-    - name: 正在载入Ubuntu-20.04
+    - name: 正在载入Ubuntu-latest
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
