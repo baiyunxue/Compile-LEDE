@@ -20,7 +20,7 @@ on:
         default: 'true'
 
 env:
-  REPO_URL: https://github.com/baiyunxue/openwrt-lede18.06.git
+  REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -35,13 +35,13 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: 检查。。。。。。初始环境
       uses: actions/checkout@main
 
-    - name: 正在载入Ubuntu-latest
+    - name: 正在载入Ubuntu-20.04
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -75,7 +75,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/DIY.config >> openwrt/.config
+        cat configs/.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -114,5 +114,5 @@ jobs:
     - name: 上传（bin+ipk）固件文件夹 到github空间
       uses: actions/upload-artifact@main
       with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: LEDE_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
