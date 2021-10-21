@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: K2P-USB
+name: ACRH17
 
 on:
   repository_dispatch:
@@ -78,7 +78,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/DIY.config >> openwrt/.config
+        cat configs/ACRH17.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -117,5 +117,5 @@ jobs:
     - name: 上传固件到github空间
       uses: actions/upload-artifact@main
       with:
-        name: K2P-USB_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: ACRH17_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
