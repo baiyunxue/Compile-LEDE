@@ -14,7 +14,16 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # 自定义feeds
-sed -i '$a src-git feeds https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
+echo 'src-git-full packages https://github.com/jjm2473/packages.git;istoreos-22.03' >> feeds.conf.default
+echo 'src-git-full luci https://github.com/jjm2473/luci.git;istoreos-22.03' >> feeds.conf.default
+echo 'src-git-full routing https://git.openwrt.org/feed/routing.git;openwrt-22.03' >> feeds.conf.default
+echo 'src-git-full telephony https://git.openwrt.org/feed/telephony.git;openwrt-22.03' >> feeds.conf.default
+# istore
+echo 'src-git store https://github.com/linkease/istore.git;main' >> feeds.conf.default
+# argon, etc.
+echo 'src-git third https://github.com/jjm2473/openwrt-third.git;main' >> feeds.conf.default
+
+#sed -i '$a src-git feeds https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
 #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #sed -i '$a src-git 281677160 https://github.com/281677160/openwrt-package.git;19.07' feeds.conf.default
 #echo 'src-git baiyunxue https://github.com/baiyunxue/lede-feeds.git' >>feeds.conf.default
