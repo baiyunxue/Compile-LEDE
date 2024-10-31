@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: by-LEDE
+name: RAX3000M-Kwrt
 
 on:
   repository_dispatch:
@@ -37,9 +37,9 @@ jobs:
           
       - name: 克隆源代码
         run: |
-          git clone https://github.com/baiyunxue/lede.git openwrt
+          git clone https://github.com/kiddin9/openwrt.git openwrt
           cd openwrt
-          sed -i '$a src-git feeds https://github.com/baiyunxue/lede-feeds.git' feeds.conf.default
+          sed -i '$a src-git packages https://github.com/kiddin9/kwrt-packages.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           
