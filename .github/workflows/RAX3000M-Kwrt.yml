@@ -4,7 +4,7 @@
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
-# https://github.com/baiyunxue/Compile-LEDE
+# https://github.com/baiyunxue/Compile
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
@@ -18,6 +18,21 @@ on:
         description: 'SSH connection to Actions'
         required: true
         default: 'true'
+
+env:
+  REPO_URL: https://github.com/kiddin9/openwrt
+  REPO_BRANCH: master
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: .config
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: false
+  UPLOAD_RELEASE: false
+  TZ: Asia/Shanghai
+
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -42,15 +57,34 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-          
+    
     - name: 克隆源代码
+      working-directory: /workdir
       run: |
-          git clone https://github.com/kiddin9/openwrt.git openwrt
-          cd openwrt
-          sed -i '$a src-git packages https://github.com/kiddin9/kwrt-packages.git' feeds.conf.default
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-          
+        df -hT $PWD
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+    
+    - name: 加载自定义 DIY_P1_SH 到 feeds.conf.default
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+        git clone https://github.com/kiddin9/kwrt-packages.git packages
+    
+    - name: 更新 & 安装 feeds
+      run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
+
+    - name: 加载自定义 .config 和 DIY_P2_SH
+      run: |
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cat configs/.config >> openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+    
     - name: SSH连接至Actions云服务器
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -58,19 +92,32 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-      
     - name: 下载编译所需要的dl包
+      id: package
       run: |
-          cd openwrt
-          make -j8 download V=s   
-          
+        cd openwrt
+        make defconfig
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+    
     - name: 开始编译固件：请稍等..........(大概2小时左右)
+      id: compile
       run: |
-          cd openwrt
-          make -j1 V=s
-          
-    - name : 上传（bin+ipk）固件文件夹 到github空间
+        cd openwrt
+        echo -e "$(nproc) thread compile"
+        make -j$(nproc) || make -j1 || make -j1 V=s
+        echo "::set-output name=status::success"
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+    
+    - name: 检查空间使用情况
+      if: (!cancelled())
+      run: df -hT
+
+    - name: 上传（bin+ipk）固件文件夹 到github空间
       uses: actions/upload-artifact@main
       with:
-          name: by-lede_bin
-          path: openwrt/bin
+        name: immortalwrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
