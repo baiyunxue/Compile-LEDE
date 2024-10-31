@@ -19,7 +19,7 @@ on:
         required: true
         default: 'true'
 jobs:
-   build:
+  build:
     runs-on: ubuntu-20.04
 
     steps:
@@ -43,34 +43,34 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
           
-     - name: 克隆源代码
-       run: |
+    - name: 克隆源代码
+      run: |
           git clone https://github.com/kiddin9/openwrt.git openwrt
           cd openwrt
           sed -i '$a src-git packages https://github.com/kiddin9/kwrt-packages.git' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           
-      - name: SSH连接至Actions云服务器
-        uses: P3TERX/ssh2actions@v1.0.0
-        if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-        env:
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    - name: SSH连接至Actions云服务器
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
       
-      - name: 下载编译所需要的dl包
-        run: |
+    - name: 下载编译所需要的dl包
+      run: |
           cd openwrt
           make -j8 download V=s   
           
-      - name: 开始编译固件：请稍等..........(大概2小时左右)
-        run: |
+    - name: 开始编译固件：请稍等..........(大概2小时左右)
+      run: |
           cd openwrt
           make -j1 V=s
           
-      - name : 上传（bin+ipk）固件文件夹 到github空间
-        uses: actions/upload-artifact@main
-        with:
+    - name : 上传（bin+ipk）固件文件夹 到github空间
+      uses: actions/upload-artifact@main
+      with:
           name: by-lede_bin
           path: openwrt/bin
