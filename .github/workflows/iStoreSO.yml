@@ -20,7 +20,7 @@ on:
         default: 'true'
 
 env:
-  REPO_URL: https://github.com/istoreos/istoreos
+  REPO_URL: https://github.com/istoreos/istoreos.git
   REPO_BRANCH: istoreso-22.03
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
