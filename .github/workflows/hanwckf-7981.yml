@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: RAX3000M-HY
+name: hanwckf-7981
 
 on:
   repository_dispatch:
