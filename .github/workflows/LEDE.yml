@@ -73,6 +73,7 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        git clone https://github.com/haiibo/openwrt-packages.git package/lean
         #git clone https://github.com/haiibo/openwrt-packages/tree/master/quickstart.git package/quickstart
         #git clone https://github.com/haiibo/openwrt-packages/tree/master/luci-app-quickstart.git package/luci-app-quickstart
         #git clone https://github.com/haiibo/openwrt-packages/tree/master/luci-app-store.git package/luci-app-store
