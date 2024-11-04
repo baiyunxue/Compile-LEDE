@@ -14,6 +14,8 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # 自定义feeds
+#echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
+#echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
 #git clone https://github.com/kiddin9/kwrt-packages package
 #echo 'src-git-full packages https://github.com/jjm2473/packages.git;istoreos-22.03' >> feeds.conf.default
 #echo 'src-git-full luci https://github.com/jjm2473/luci.git;istoreos-22.03' >> feeds.conf.default
