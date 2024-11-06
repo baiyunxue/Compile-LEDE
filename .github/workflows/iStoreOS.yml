@@ -76,7 +76,7 @@ jobs:
         
     - name: 集成istore
       run: |
-        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+        git clone https://github.com/linkease/istore;main.git package/feeds/istore
         ./scripts/feeds update istore
         ./scripts/feeds install -d y -p istore luci-app-store
     
