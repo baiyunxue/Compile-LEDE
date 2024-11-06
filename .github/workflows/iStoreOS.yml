@@ -76,6 +76,7 @@ jobs:
         
     - name: 集成istore
       run: |
+        cd openwrt
         git clone https://github.com/linkease/istore.git package/feeds/istore
         ./scripts/feeds update istore
         ./scripts/feeds install -d y -p istore luci-app-store
