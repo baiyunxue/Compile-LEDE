@@ -69,7 +69,7 @@ jobs:
     
     - name: 加载自定义 软件包
       run: |
-        sed -i '$a src-git haibo https://github.com/haiibo/openwrt-packages.git' feeds.conf.default
+        git clone https://github.com/haiibo/openwrt-packages package/filse
         
     - name: 更新 & 安装 feeds
       run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
