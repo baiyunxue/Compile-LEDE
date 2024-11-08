@@ -70,8 +70,12 @@ jobs:
     - name: 加载自定义 软件包
       run: |
         cd openwrt
-        sed -i '$a src-git haiibo https://github.com/haiibo/openwrt-packages.git' feeds.conf.default
-        
+        #sed -i '$a src-git haiibo https://github.com/haiibo/openwrt-packages.git' feeds.conf.default
+        echo >> feeds.conf.default
+        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+        ./scripts/feeds update istore
+        ./scripts/feeds install -d y -p istore luci-app-store
+        svn co https://github.com/haiibo/openwrt-packages/trunk/luci-app-istorex package/feeds/luci-app-istorex
     - name: 更新 & 安装 feeds
       run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
     
