@@ -73,7 +73,10 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        git clone https://github.com/kiddin9/kwrt-packages.git package/feeds
+        #git clone https://github.com/kiddin9/kwrt-packages.git package/feeds
+        sed -i '$a src-git kenzok https://github.com/kenzok8/openwrt-packages.git' feeds.conf.default
+        sed -i '$a src-git small https://github.com/kenzok8/small.git' feeds.conf.default
+
     
     - name: 更新 & 安装 feeds
       run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
