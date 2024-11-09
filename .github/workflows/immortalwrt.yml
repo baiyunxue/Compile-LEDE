@@ -74,8 +74,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
         #git clone https://github.com/kiddin9/kwrt-packages.git package/feeds
-        sed -i '$a src-git kenzok https://github.com/kenzok8/openwrt-packages.git' feeds.conf.default
-        sed -i '$a src-git small https://github.com/kenzok8/small.git' feeds.conf.default
+        sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+        sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 
     
     - name: 更新 & 安装 feeds
