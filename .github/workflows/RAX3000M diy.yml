@@ -70,7 +70,8 @@ jobs:
         echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-    - name: 加载自定义 .config 和 DIY_P2_SH
+
+    - name: Load custom configuration ==>【加载.config】
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
