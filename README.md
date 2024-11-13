@@ -4,7 +4,7 @@
 ![GitHub Stars](https://img.shields.io/github/stars/Lancenas/actions-openwrt-helloworld.svg?style=flat-square&label=Stars&logo=github)
 ![GitHub Forks](https://img.shields.io/github/forks/Lancenas/actions-openwrt-helloworld.svg?style=flat-square&label=Forks&logo=github)
 
-- **感谢** [P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)、[coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)、[Lienol/openwrt](https://github.com/Lienol/openwrt)、[Project ImmortalWrt/openwrt](https://github.com/immortalwrt/immortalwrt)
+- **感谢** [P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)、[coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)、[Lienol/openwrt](https://github.com/Lienol/openwrt)、[Project ImmortalWrt/openwrt](https://github.com/immortalwrt/immortalwrt)、（https://github.com/kenzok8）
 
 通过导入自定义config文件到.config，在线编译openwrt固件；
 
