@@ -72,8 +72,9 @@ jobs:
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
+        # git clone https://github.com/kiddin9/kwrt-packages.git package/feeds/kiddin9
         $GITHUB_WORKSPACE/$DIY_P1_SH
-    #    git clone https://github.com/kiddin9/kwrt-packages.git package
+    
     
     - name: 更新 & 安装 feeds
       run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
@@ -82,7 +83,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/RAX3000M.config >> openwrt/.config
+        cat configs/RAX3000M2.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
