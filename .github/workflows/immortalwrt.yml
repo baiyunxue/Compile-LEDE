@@ -66,19 +66,28 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-    
-    - name: 加载自定义 DIY_P1_SH 到 feeds.conf.default
+        
+    - name: Load custom feeds ==> 【加载自定义 DIY_P1_SH 到 feeds.conf.default】
       run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
         cd openwrt
-        sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-        sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-        ./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
-        rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
-        rm -rf feeds/packages/utils/v2dat
-        rm -rf feeds/packages/lang/golang
-        git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-        ./scripts/feeds install -a 
-    # git clone https://github.com/kiddin9/kwrt-packages.git package/feeds
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+
+    - name: Update feeds ==> 【更新feeds】
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds ==> 【安装feeds】
+      run: cd openwrt && ./scripts/feeds install -a
+
+    - name: Load custom configuration ==> 【加载自定义 .config 和 DIY_P2_SH】
+      run: |
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cat configs/RAX3000M2.config >> openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
     
     - name: SSH连接至Actions云服务器
       uses: P3TERX/ssh2actions@v1.0.0
