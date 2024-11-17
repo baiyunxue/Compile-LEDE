@@ -71,11 +71,11 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Load custom configuration ==>【加载.config】
+    - name: Load custom configuration ==> 【加载自定义 .config 和 DIY_P2_SH】
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/DIY.config >> openwrt/.config
+        cat configs/diy.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
