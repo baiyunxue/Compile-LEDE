@@ -16,8 +16,8 @@ on:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
-        required: true
-        default: 'true'
+        required: false
+        default: 'false'
 
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
@@ -79,7 +79,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/DIY.config >> openwrt/.config
+        cat configs/rax3000m-mr.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
