@@ -8,68 +8,82 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-        
+
+ 
+
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
   TZ: Asia/Shanghai
-  DEVICE: RAX3000M
+  DEVICE: rax3000m
   UPLOAD_OUTPUT: true
 
 jobs:
-   build:
+   _rax3000m:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
 
+
     steps:
-    - name: 配置
-      uses: actions/checkout@master
-    
-    - name: 配置环境
+    - name: Checkout ==> 【检查。。。。。。初始环境】
+      uses: actions/checkout@main
+
+    - name: 检查服务器配置
+      if: (!cancelled())
+      run: |
+        echo "警告⚠"
+        echo "若分配的服务器性能不足，务必及时取消，重新运行！"
+        echo "已知编译成功CPU型号：8370C,8171M"
+        echo "已知性能不足CPU型号：8272CL,E5系列"
+        echo "--------------------------CPU信息--------------------------"
+        echo "CPU物理数量:$(cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l)"
+        echo -e "CPU核心及版本信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
+        echo "--------------------------内存信息--------------------------"
+        echo "已安装内存详细信息："
+        sudo lshw -short -C memory | grep GiB
+        echo -e "\n"
+        echo "--------------------------硬盘信息--------------------------"
+        echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n"
+        echo "硬盘详情："
+        df -Th
+
+    - name: Initialization environment ==> 【正在载入Ubuntu-20.04】
       env:
-          DEBIAN_FRONTEND: noninteractive
+        DEBIAN_FRONTEND: noninteractive
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install ack neofetch antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache \
-             cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool \
-             libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev \
-             libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 \
-             python3-pip libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget \
-             xmlto xxd zlib1g-dev
+        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
-        sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 curl gawk gettext git libncurses5-dev libz-dev patch python3.5 \
-             python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev \
-             texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
-        sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache clang clangd \
-             cmake cpio curl device-tree-compiler ecj fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool \
-             lib32gcc-s1 libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5 \
-             libncursesw5-dev libreadline-dev libssl-dev libtool lld lldb lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf \
-             python2.7 python3 python3-pip python3-ply python-docutils qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo \
-             uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev 
-      
-    - name: 克隆源码
-      working-directory: /workdir
+        sudo mkdir -p /mnt/workdir
+        sudo chown $USER:$GROUPS /mnt/workdir
+
+    - name: Clone source code ==> 【克隆Openwrt源代码】
+      working-directory: /mnt/workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-
-    - name: 配置 Feeds
+    - name: Load custom feeds ==> 【加载自定义 DIY_P1_SH 到 feeds.conf.default】
       run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
         cd openwrt
-        echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
-        echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+
+    - name: Update feeds ==> 【更新feeds】
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds ==> 【安装feeds】
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration ==> 【加载自定义 .config 和 DIY_P2_SH】
       run: |
@@ -79,21 +93,16 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
-    - name: 修改 Lan IP
-      run: |
-        cd openwrt
-        sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
-        neofetch
-    
-    - name: SSH connection to Actions
+      
+    - name: SSH connection to Actions ==> 【SSH连接至Actions云服务器】
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        
-    - name: 下载依赖
+
+    - name: Download package ==> 【下载编译所需要的dl包】
+      id: package
       run: |
         cd openwrt
         make defconfig
@@ -101,13 +110,13 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: 编译固件
+    - name: Compile the firmware ==> 【开始编译固件：请稍等..........(大概2小时左右)】
       run: |
         cd openwrt
         make -j$(nproc)
         echo "FILE_DATE=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
-    - name : 上传输出文件
+    - name : Upload bin directory ==> 【上传（bin+ipk）固件文件夹 到github空间】
       uses: actions/upload-artifact@master
       if: env.UPLOAD_OUTPUT == 'true' && !cancelled()
       with:
@@ -127,4 +136,4 @@ jobs:
         body: |
           # 未测试×
           
-          IP: 192.168.2.1 | Password: none
+          IP: 192.168.5.1 | Password: none
