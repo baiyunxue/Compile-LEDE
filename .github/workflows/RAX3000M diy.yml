@@ -1,4 +1,14 @@
-name: RAX3000M diy
+#=========================================================
+# Copyright (c) 2021 baiyunxue
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/baiyunxue/Compile
+# Description: Build OpenWrt using GitHub Actions
+#=========================================================
+
+name: hanwckf MT7981-cj
 
 on:
   repository_dispatch:
@@ -89,7 +99,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/diy.config >> openwrt/.config
+        cat configs/MT7981-237cj.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -136,4 +146,4 @@ jobs:
         body: |
           # 未测试×
           
-          IP: 192.168.5.1 | Password: none
+          IP: 192.168.1.1 | Password: none
