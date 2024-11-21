@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: padavanonly-798X
+name: padavanonly MT7981-237app
 
 on:
   repository_dispatch:
