@@ -29,7 +29,7 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   TZ: Asia/Shanghai
-  DEVICE: rax3000m
+  DEVICE: RAX3000M
   UPLOAD_OUTPUT: true
 
 jobs:
@@ -99,7 +99,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/MT7981-237cj.config >> openwrt/.config
+        cat configs/237cj.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
