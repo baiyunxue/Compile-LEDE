@@ -23,7 +23,8 @@ echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
 #echo 'src-git-full telephony https://git.openwrt.org/feed/telephony.git;openwrt-22.03' >> feeds.conf.default
 # istore
 #echo 'src-git store https://github.com/linkease/istore.git;main' >> feeds.conf.default
-echo "src-git linkease https://github.com/linkease/luci-app-linkease" >> ./feeds.conf.default
+echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
+echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
 # argon, etc.
 #echo 'src-git third https://github.com/jjm2473/openwrt-third.git;main' >> feeds.conf.default
 
