@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: immortalwrt-X86cj
+name: immortalwrt-MT7981-app
 
 on:
   repository_dispatch:
@@ -29,11 +29,11 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   TZ: Asia/Shanghai
-  DEVICE: X86
+  DEVICE: MT7981
   UPLOAD_OUTPUT: true
 
 jobs:
-   _rax3000m:
+   _openwrt:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -87,6 +87,7 @@ jobs:
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
+        svn co https://github.com/linkease/nas-packages-luci/tree/main/luci/luci-app-linkease package/luci-app-linkease
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds ==> 【更新feeds】
@@ -99,7 +100,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/X86cj.config >> openwrt/.config
+        cat configs/MT7981-app.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
