@@ -87,7 +87,7 @@ jobs:
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
-        svn co https://github.com/linkease/nas-packages-luci/tree/main/luci/luci-app-linkease package/luci-app-linkease
+        svn co https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-linkease package/luci-app-linkease
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds ==> 【更新feeds】
