@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: padavanonly MT7981-237app
+name: P mtk7981-puls
 
 on:
   repository_dispatch:
@@ -29,11 +29,11 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   TZ: Asia/Shanghai
-  DEVICE: MT7981全系列
+  DEVICE: mtk7981原驱全系列 集成Docker等常用软件包（适合emmc）
   UPLOAD_OUTPUT: true
 
 jobs:
-   _rax3000m:
+   _Openwrt:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -99,7 +99,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        cat configs/MT7981-237app.config >> openwrt/.config
+        cat configs/mtk7981-puls.config >> openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
