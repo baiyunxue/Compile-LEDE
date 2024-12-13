@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=========================================================
 
-name: H mtk7981-puls
+name: H-mtk7981-puls
 
 on:
   repository_dispatch:
@@ -29,7 +29,7 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   TZ: Asia/Shanghai
-  DEVICE: mtk7981原驱全系列 集成Docker等常用软件包（适合emmc）
+  DEVICE: mtk7981原驱全系列-集成Docker等常用软件包（适合emmc）
   UPLOAD_OUTPUT: true
 
 jobs:
